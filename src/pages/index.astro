@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-2 mt-5">
+    <div class="text-xl py-1">Hey there 👋🏼</div>
+    <div class="text-5xl font-bold">I'm Hilal Ilcin </div>
+    <div class="text-3xl py-3">Data Scientist, AI & Machine Learning Engineer</div>
+
+    <div class="py-8">
+      <text class="text-lg">
+        Welcome to my personal website! ⚛️
+      </text>
+    </div>
+    <!-- <div class="mt-8">
+      <a class="btn" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
+      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
+        Get This template
+      </a>
+    </div> -->
+  </div>
+
+  <div>
+    <div class="text-2xl w-full font-bold mb-2 pt-10">About me</div>
+    <div class="py-2">
+      <text class="text-lg">
+        I was born in <a href="https://www.youtube.com/watch?v=no7LCcGTvn8">Turkey</a> and successfully completed my Bachelor's degree in Mathematics 
+        at one of Turkey’s leading universities. Currently, I  pursued and completed  a Master’s degree in  Data Science at 
+        Middlesex University London in <a href="https://www.youtube.com/watch?v=jmoPo11ktN4">United Kingdom</a>.
+      </text>
+    </div>
+    <div class="py-2">
+      <text class="text-lg">
+        I successfully completed my Bachelor's degree in Mathematics at one of Turkey’s leading universities. Later, I pursued a Master’s degree
+         in Data Science at Middlesex University in the UK. My interest in data science originates from its capacity to convert intricate data 
+         into practical insights that influence business decisions and advancements. Throughout my education, I have honed my skills in data analysis,
+          statistical modeling, and machine learning, preparing me to confront real-world challenges. I am especially intrigued by the prospect of utilizing
+           data to pinpoint trends, enhance processes, and underpin strategic decision-making.
+   
+      </text>
+    </div>
+    <div class="py-2">
+      <text class="text-lg">
+        As I progress in my profession, I am enthusiastic about applying my expertise in a dynamic and data-focused setting. I aspire to make a meaningful 
+        contribution as a Data Scientist in a prominent organization, leveraging data to deliver tangible business results. Given my proficiency in handling 
+        large datasets, crafting predictive models, and effectively conveying insights, I am confident in my ability to drive substantial outcomes in competitive 
+        markets such as London. Beyond my technical capabilities, my drive stems from a desire to explore new technologies and methodologies. I also find fulfillment
+         in traveling and immersing myself in diverse cultures, which allows me to bring varied perspectives to problem-solving. Furthermore,  
+         Swimming, playing tennis, and music are integral components of my personal growth, helping me maintain focus and balance in my practice. 
+      </text>
+    </div>
+
+    <div class="py-7">
+      <text class="text-lg" style="margin-top: 30px;">
+        These are a few of my favorite things:
+      </text>
+
+        <ul class="list-disc pl-10 mb-4">
+          <li class="mt-2">City: <a href="https://www.youtube.com/watch?v=cwenLWoeItQ">London 🇬🇧</a></li>
+          <li>Movie: Sherlock Holmes</li>
+          <li>Book: Victor Hugo - The Hunchback of Notre-Dame</li>
+          <li>Scientist: Alan Turing </li>
+        </ul>
+
+    </div>
+
+  </div>
+
+  <div>
+    <div class="text-2xl w-full font-bold pt-10 mb-2">This website</div>
+    <div class="py-2">
+      <text class="text-lg">
+        I built this website using Astro web framework using
+        <a href="https://github.com/manuelernestog/astrofy">Astrofy template</a>
+        It's hosted on Vercel. I maintain it locally using VSCode and upload
+        changes to GitHub. This whole thing cost me $0 to build and host!
+      </text>
+    </div>
+  </div>
+
+  <!-- <div>
+    <div class="text-2xl w-full font-bold mb-2 pt-10">Get in Touch</div>
+    <div class="py-2">
+      <text class="text-lg">
+        Want to discuss a cool idea?
+      </text>
+      <div class="mt-2">
+        <a class="btn" href="https://www.linkedin.com/in/hilalilcin/" target="_blank"> Let's Connect!</a>
+        <a href="mailto:canduyar9991@gmail.com" target="_blank" class="btn btn-outline ml-5" referrerpolicy="no-referrer-when-downgrade">
+          Email me
+        </a>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div>
+    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  </div>
+
+  <HorizontalCard
+    title="Demo Project 1"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 2"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Demo Project 3"
+    img="/post_img.webp"
+    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    url="#"
+    badge="FOSS"
+  /> -->
+
+  <!-- <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  </div>
+
+  {
+    last_posts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={post.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  } -->
+</BaseLayout>
